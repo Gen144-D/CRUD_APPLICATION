@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add Contact - Your Business Name</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+      background: url('1.png') center center / cover no-repeat fixed #18122B;
+      font-family: 'Montserrat', "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+    }
+    /* Aura/Phonk-inspired animated blobs background */
+    .aura-bg {
+      position: fixed;
+      top: 0; left: 0; width: 100vw; height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .aura-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.7;
+      animation: auraFloat 18s ease-in-out infinite alternate;
+      mix-blend-mode: lighten;
+      transition: opacity 0.5s;
+    }
+    .aura-blob1 { width: 600px; height: 600px; background: radial-gradient(circle, #ff6fd8 0%, #3813c2 80%); left: -180px; top: -160px; animation-delay: 0s; }
+    .aura-blob2 { width: 500px; height: 500px; background: radial-gradient(circle, #fbc2eb 0%, #fad0c4 80%); right: -160px; top: 120px; animation-delay: 4s; }
+    .aura-blob3 { width: 420px; height: 420px; background: radial-gradient(circle, #43e97b 0%, #38f9d7 80%); left: 35vw; bottom: -100px; animation-delay: 8s; }
+    .aura-blob4 { width: 350px; height: 350px; background: radial-gradient(circle, #f7971e 0%, #ffd200 80%); right: 10vw; bottom: -80px; animation-delay: 12s; }
+    .aura-blob5 { width: 320px; height: 320px; background: radial-gradient(circle, #fd6e6a 0%, #ffc371 80%); left: 60vw; top: 10vh; animation-delay: 2s; }
+    .aura-blob6 { width: 300px; height: 300px; background: radial-gradient(circle, #43cea2 0%, #185a9d 80%); left: 70vw; bottom: 10vh; animation-delay: 6s; }
+    @keyframes auraFloat {
+      0%   { transform: scale(1) translateY(0) translateX(0);}
+      50%  { transform: scale(1.12) translateY(60px) translateX(40px);}
+      100% { transform: scale(1) translateY(0) translateX(0);}
+    }
+    .navbar-brand {
+      font-family: 'Orbitron', 'Montserrat', sans-serif;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 2rem;
+      color: #fff !important;
+      text-shadow: 0 2px 16px #0dcaf0, 0 1px 1px #000;
+      transition: color 0.2s;
+    }
+    .navbar {
+      background: linear-gradient(90deg, #0a58ca 0%, #0dcaf0 100%);
+      box-shadow: 0 2px 24px 0 rgba(13,202,240,0.12);
+    }
+    .card {
+      border-radius: 1.25rem;
+      box-shadow: 0 0.5rem 2rem rgb(13 202 240 / 0.10), 0 2px 24px 0 rgba(0,0,0,0.10);
+      position: relative;
+      z-index: 1;
+      border: none;
+      background: rgba(30,34,43,0.85);
+      backdrop-filter: blur(8px);
+      overflow: hidden;
+    }
+    .card-header {
+      background: linear-gradient(90deg, #0dcaf0 0%, #0a58ca 100%) !important;
+      border-bottom: none;
+      border-radius: 1.25rem 1.25rem 0 0 !important;
+      box-shadow: 0 2px 16px 0 rgba(13,202,240,0.10);
+    }
+    .card-header h4 {
+      font-family: 'Orbitron', 'Montserrat', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+      color: #fff;
+      text-shadow: 0 2px 8px #0dcaf0;
+    }
+    .card-body {
+      padding: 2.5rem 2rem 2rem 2rem;
+    }
+    .form-label {
+      font-weight: 600;
+      color: #b6eaff;
+      letter-spacing: 1px;
+    }
+    .form-control {
+      border-radius: 0.7rem;
+      background: rgba(255,255,255,0.09) !important;
+      color: #fff !important;
+      border: 1.5px solid #0dcaf0;
+      font-size: 1.08rem;
+      box-shadow: 0 2px 8px 0 rgba(13,202,240,0.04);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .form-control:focus {
+      border-color: #0dcaf0;
+      box-shadow: 0 0 0 0.2rem rgba(13,202,240,0.18);
+      background: rgba(255,255,255,0.13) !important;
+      color: #fff !important;
+    }
+    .btn-info {
+      background: linear-gradient(90deg,#0dcaf0 0%,#0a58ca 100%);
+      border: none;
+      letter-spacing:1px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 16px 0 rgba(13,202,240,0.10);
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-info:hover, .btn-info:focus {
+      background: linear-gradient(90deg,#0a58ca 0%,#0dcaf0 100%);
+      color: #fff;
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 4px 24px 0 rgba(13,202,240,0.18);
+    }
+    .btn-outline-info, .btn-outline-light {
+      border-radius: 2rem;
+      font-weight: 600;
+      font-size: 1.08rem;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px 0 rgba(13,202,240,0.08);
+      background: rgba(255,255,255,0.07);
+      border-width: 2px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.15s;
+    }
+    .btn-outline-info:hover, .btn-outline-info:focus {
+      background: #0dcaf0;
+      color: #18122B !important;
+      border-color: #0dcaf0;
+      transform: scale(1.04);
+    }
+    .btn-outline-light:hover, .btn-outline-light:focus {
+      background: #fff;
+      color: #18122B !important;
+      border-color: #fff;
+      transform: scale(1.04);
+    }
+    .footer {
+      background: rgba(30,34,43,0.95);
+      color: #b6eaff;
+      padding: 1.2rem 0 0.7rem 0;
+      margin-top: auto;
+      text-align: center;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      border-top: 2px solid #0dcaf0;
+      box-shadow: 0 -2px 16px 0 rgba(13,202,240,0.10);
+    }
+    .footer .text-info {
+      color: #0dcaf0 !important;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+    }
+    @media (max-width: 992px) {
+      .card-body { padding: 1.2rem !important; }
+      .card-header h4 { font-size: 1.2rem; }
+      .col-md-8.col-lg-6 { max-width: 100%; }
+    }
+    @media (max-width: 576px) {
+      .card { border-radius: 1rem; }
+      .card-header { border-radius: 1rem 1rem 0 0 !important; }
+      .card-body { padding: 0.7rem !important; }
+      .navbar-brand { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Aura Animated Background -->
+  <div class="aura-bg">
+    <div class="aura-blob aura-blob1"></div>
+    <div class="aura-blob aura-blob2"></div>
+    <div class="aura-blob aura-blob3"></div>
+    <div class="aura-blob aura-blob4"></div>
+    <div class="aura-blob aura-blob5"></div>
+    <div class="aura-blob aura-blob6"></div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark shadow-sm">
+    <div class="container">
+      <div class="w-100 d-flex justify-content-center">
+        <a class="navbar-brand mx-auto" href="https://www.facebook.com/genesis.diaz.685426">Genesis_Coding</a>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu"
+        aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto"></ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container my-5 flex-grow-1">
+    <div class="row justify-content-center">
+      <div class="col-12 col-sm-10 col-md-8 col-lg-6 px-1 px-sm-2">
+        <div class="card shadow-lg">
+          <div class="card-header text-white text-center rounded-top-3">
+            <h4 class="mb-0 fw-bold">Add New Contact</h4>
+          </div>
+          <div class="card-body p-4 p-md-3 p-lg-4">
+            <form action="submit.php" method="POST" novalidate>
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter full name" required />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required />
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label">Subject</label>
+                <input type="text" id="subject" name="subject" class="form-control" placeholder="Subject of the message" required />
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label">Message</label>
+                <textarea id="message" name="message" class="form-control" rows="5" placeholder="Write your message here..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-info w-100 fw-semibold shadow">
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+        <div class="text-center mt-4 d-flex flex-column flex-md-row justify-content-center gap-3">
+          <a href="view.php" class="btn btn-outline-info fw-semibold px-4 py-2 shadow-sm d-inline-flex align-items-center mb-2 mb-md-0" style="transition:background 0.2s;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#0dcaf0" class="me-2" viewBox="0 0 16 16">
+              <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zm-8 4.5c-2.485 0-4.5-2.015-4.5-4.5S5.515 3.5 8 3.5s4.5 2.015 4.5 4.5-2.015 4.5-4.5 4.5zm0-1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+            </svg>
+            View Contacts
+          </a>
+          <a href="https://gen288.github.io/Websystem/Home.html" class="btn btn-outline-light fw-semibold px-4 py-2 shadow-sm d-inline-flex align-items-center" style="transition:background 0.2s;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#fff" class="me-2" viewBox="0 0 16 16">
+              <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 2 7.5V14a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V11h2v3a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1V7.5a.5.5 0 0 0-.146-.354l-6-6z"/>
+            </svg>
+            Home
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer mt-5 border-0">
+    <div class="container text-center py-3">
+      <span class="fw-semibold text-info">&copy; 2025 Gen.Tech_Coding</span>
+      <span class="mx-2 text-secondary">|</span>
+      <span class="text-light">At your service. Be blessed!</span>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
